@@ -1,0 +1,507 @@
+@import "tailwindcss";
+
+/* Custom font imports for a unique look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Unique color palette - NOT typical AI colors */
+  --brand-orange: #ff6b35;
+  --brand-orange-light: #ff8c42;
+  --brand-orange-dark: #e55a2b;
+  
+  --brand-teal: #2dd4bf;
+  --brand-teal-light: #5eead4;
+  --brand-teal-dark: #0d9488;
+  
+  --brand-purple: #8b5cf6;
+  --brand-purple-light: #a78bfa;
+  --brand-purple-dark: #7c3aed;
+  
+  /* Warm grays instead of cold blues */
+  --warm-gray-50: #fafaf9;
+  --warm-gray-100: #f5f5f4;
+  --warm-gray-200: #e7e5e4;
+  --warm-gray-300: #d6d3d1;
+  --warm-gray-400: #a8a29e;
+  --warm-gray-500: #78716c;
+  --warm-gray-600: #57534e;
+  --warm-gray-700: #44403c;
+  --warm-gray-800: #292524;
+  --warm-gray-900: #1c1917;
+  
+  /* Semantic colors with personality */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: var(--brand-teal);
+  
+  /* Custom shadows for depth */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.16);
+  
+  /* Background textures */
+  --bg-texture: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5f5f4' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  
+  /* Semantic Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: var(--brand-teal);
+  
+  /* Background and Foreground */
+  --background: #fafaf9;
+  --foreground: #1c1917;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c1917;
+    --foreground: #fafaf9;
+  }
+}
+
+/* Base styles */
+* {
+  border-color: var(--warm-gray-200);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-texture), linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+  color: var(--foreground);
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+}
+
+/* Custom button styles - more organic, less AI */
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-orange-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--warm-gray-100);
+  color: var(--warm-gray-700);
+  border: 1.5px solid var(--warm-gray-200);
+  border-radius: 12px;
+  padding: 11px 23px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--warm-gray-50);
+  border-color: var(--warm-gray-300);
+  transform: translateY(-0.5px);
+}
+
+/* Card styles - unique design */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: 24px;
+  position: relative;
+}
+
+.card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.3), transparent);
+}
+
+/* Input styles - modern but not typical */
+.input-field {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid var(--warm-gray-200);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--warm-gray-800);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--brand-orange);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--warm-gray-400);
+  font-weight: 400;
+}
+
+/* Force visible text in all inputs and selects */
+input, select, textarea {
+  color: #1f2937 !important;
+  background-color: #ffffff !important;
+  -webkit-text-fill-color: #1f2937 !important;
+}
+
+input::placeholder, select::placeholder, textarea::placeholder {
+  color: #6b7280 !important;
+  -webkit-text-fill-color: #6b7280 !important;
+}
+
+/* Custom scrollbar */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-orange-light) transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--brand-orange-light), var(--brand-orange));
+  border-radius: 3px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-orange);
+}
+
+/* Typography with character */
+.heading-primary {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--warm-gray-900) 0%, var(--brand-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.heading-secondary {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: var(--warm-gray-800);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Balance cards with personality */
+.balance-positive {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+  border-left: 4px solid var(--success);
+}
+
+.balance-negative {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border-left: 4px solid var(--error);
+}
+
+/* Expense items with unique styling */
+.expense-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 18px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.expense-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 107, 53, 0.2);
+}
+
+/* Friend list styling */
+.friend-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 244, 0.7) 100%);
+  border: 1px solid var(--warm-gray-200);
+  border-radius: 14px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.friend-item:hover {
+  border-color: var(--brand-teal-light);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(245, 245, 244, 0.9) 100%);
+}
+
+/* Navbar enhancement */
+.navbar-brand {
+  background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Loading states with personality */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.loading-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: var(--warm-gray-100);
+}
+
+.loading-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Custom focus styles */
+*:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Mobile enhancements */
+@media (max-width: 768px) {
+  .card {
+    border-radius: 16px;
+    padding: 20px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    border-radius: 10px;
+    padding: 12px 20px;
+  }
+  
+  .input-field {
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+}
+
+/* Typography Scale */
+.text-display {
+  font-size: 3.75rem;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.text-headline {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.text-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+
+.text-caption {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+/* Modern Text Colors */
+.text-primary {
+  color: var(--neutral-900);
+}
+
+.text-secondary {
+  color: var(--neutral-600);
+}
+
+.text-tertiary {
+  color: var(--neutral-500);
+}
+
+.text-accent {
+  color: var(--primary-600);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-100);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-400);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Input and Form Element Styling */
+input, textarea, select {
+  color: var(--neutral-900) !important;
+  background-color: white !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--neutral-400) !important;
+  opacity: 0.8;
+}
+
+input:focus, textarea:focus, select:focus {
+  color: var(--neutral-900) !important;
+  background-color: white !important;
+}
+
+/* Specific input type styling */
+input[type="text"], 
+input[type="email"], 
+input[type="number"], 
+input[type="password"], 
+textarea, 
+select {
+  color: var(--neutral-900) !important;
+  background-color: white !important;
+  caret-color: var(--primary-600);
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="number"]:focus, 
+input[type="password"]:focus, 
+textarea:focus, 
+select:focus {
+  color: var(--neutral-900) !important;
+  background-color: white !important;
+}
+
+/* Checkbox and radio styling */
+input[type="checkbox"], 
+input[type="radio"] {
+  color: var(--primary-600) !important;
+}
+
+/* Option styling for select elements */
+option {
+  color: var(--neutral-900) !important;
+  background-color: white !important;
+}
+
+/* TARGETED TEXT VISIBILITY FIXES - Only for problematic elements */
+/* Force dark text ONLY for form elements that have visibility issues */
+input, 
+select, 
+textarea {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  -webkit-text-fill-color: #000000 !important;
+  opacity: 1 !important;
+}
+
+/* Select dropdown options */
+select option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Placeholder text visibility */
+input::placeholder, 
+textarea::placeholder {
+  color: #666666 !important;
+  -webkit-text-fill-color: #666666 !important;
+  opacity: 1 !important;
+}
+
+/* Only fix specific gray text classes that are too light */
+.text-gray-400 {
+  color: #6b7280 !important;
+}
+
+.text-gray-500 {
+  color: #6b7280 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
